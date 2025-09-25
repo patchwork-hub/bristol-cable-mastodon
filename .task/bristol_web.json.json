@@ -1,97 +1,100 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:672691776916:task-definition/mome-web:12",
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
     "containerDefinitions": [
         {
-            "name": "mome-web",
-            "image": "672691776916.dkr.ecr.eu-west-2.amazonaws.com/mo-me:prod",
-            "cpu": 0,
-            "portMappings": [
-                {
-                    "name": "mome-web-3000-tcp",
-                    "containerPort": 3000,
-                    "hostPort": 3000,
-                    "protocol": "tcp",
-                    "appProtocol": "http"
-                }
-            ],
-            "essential": true,
             "command": [
                 "bash",
                 "-c",
-                "aws s3 cp s3://patchwork-private-env/fcm_mo_me_service.json /opt/mastodon/config && bundle exec rails db:create && bundle exec rails db:migrate && bundle exec rails s -p 3000"
+                "bundle exec rails db:create && bundle exec rails db:migrate && bundle exec rails s -p 3000"
             ],
+            "cpu": 0,
             "environment": [],
             "environmentFiles": [
                 {
-                    "value": "arn:aws:s3:::patchwork-private-env/mome.env",
-                    "type": "s3"
+                    "type": "s3",
+                    "value": "arn:aws:s3:::patchwork-private-env/bristolcable-social.env"
                 }
             ],
-            "mountPoints": [],
-            "volumesFrom": [],
-            "workingDirectory": "/opt/mastodon",
-            "ulimits": [
-                {
-                    "name": "nofile",
-                    "softLimit": 1024,
-                    "hardLimit": 4096
-                },
-                {
-                    "name": "core",
-                    "softLimit": 0,
-                    "hardLimit": 0
-                },
-                {
-                    "name": "memlock",
-                    "softLimit": 64,
-                    "hardLimit": 64
-                },
-                {
-                    "name": "msgqueue",
-                    "softLimit": 819200,
-                    "hardLimit": 819200
-                },
-                {
-                    "name": "nice",
-                    "softLimit": 0,
-                    "hardLimit": 0
-                },
-                {
-                    "name": "nproc",
-                    "softLimit": 15471,
-                    "hardLimit": 15471
-                },
-                {
-                    "name": "rtprio",
-                    "softLimit": 0,
-                    "hardLimit": 0
-                },
-                {
-                    "name": "sigpending",
-                    "softLimit": 15471,
-                    "hardLimit": 15471
-                }
-            ],
+            "essential": true,
+            "image": "672691776916.dkr.ecr.eu-west-2.amazonaws.com/bristolcable:prod",
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/mome-web",
+                    "awslogs-group": "/ecs/bristolcable-web",
                     "awslogs-create-group": "true",
                     "awslogs-region": "eu-west-2",
                     "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
+                }
             },
-            "systemControls": []
+            "mountPoints": [],
+            "name": "bristolcable-web",
+            "portMappings": [
+                {
+                    "appProtocol": "http",
+                    "containerPort": 3000,
+                    "hostPort": 3000,
+                    "name": "bristolcable-web-3000-tcp",
+                    "protocol": "tcp"
+                }
+            ],
+            "systemControls": [],
+            "ulimits": [
+                {
+                    "hardLimit": 4096,
+                    "name": "nofile",
+                    "softLimit": 1024
+                },
+                {
+                    "hardLimit": 0,
+                    "name": "core",
+                    "softLimit": 0
+                },
+                {
+                    "hardLimit": 64,
+                    "name": "memlock",
+                    "softLimit": 64
+                },
+                {
+                    "hardLimit": 819200,
+                    "name": "msgqueue",
+                    "softLimit": 819200
+                },
+                {
+                    "hardLimit": 0,
+                    "name": "nice",
+                    "softLimit": 0
+                },
+                {
+                    "hardLimit": 15471,
+                    "name": "nproc",
+                    "softLimit": 15471
+                },
+                {
+                    "hardLimit": 0,
+                    "name": "rtprio",
+                    "softLimit": 0
+                },
+                {
+                    "hardLimit": 15471,
+                    "name": "sigpending",
+                    "softLimit": 15471
+                }
+            ],
+            "volumesFrom": [],
+            "workingDirectory": "/opt/mastodon"
         }
     ],
-    "family": "mome-web",
-    "taskRoleArn": "arn:aws:iam::672691776916:role/patchwork-ecs-task-role",
+    "cpu": "512",
     "executionRoleArn": "arn:aws:iam::672691776916:role/patchwork-ecs-task-execution-role",
+    "family": "bristolcable-web",
+    "memory": "1024",
     "networkMode": "awsvpc",
-    "revision": 12,
-    "volumes": [],
-    "status": "ACTIVE",
+    "placementConstraints": [],
+    "registeredAt": "2025-09-25T09:40:04.965Z",
+    "registeredBy": "arn:aws:iam::672691776916:user/ahn",
     "requiresAttributes": [
         {
             "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
@@ -127,21 +130,17 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
         }
     ],
-    "placementConstraints": [],
-    "compatibilities": [
-        "EC2",
-        "FARGATE"
-    ],
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "cpu": "1024",
-    "memory": "2048",
+    "revision": 1,
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2025-07-24T06:29:50.666Z",
-    "registeredBy": "arn:aws:iam::672691776916:user/ahn",
+    "status": "ACTIVE",
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:672691776916:task-definition/bristolcable-web:1",
+    "taskRoleArn": "arn:aws:iam::672691776916:role/patchwork-ecs-task-role",
+    "volumes": [],
     "tags": []
 }

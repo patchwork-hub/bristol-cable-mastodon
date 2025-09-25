@@ -1,47 +1,51 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:672691776916:task-definition/mome-sidekiq:11",
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
     "containerDefinitions": [
         {
-            "name": "mome-sidekiq",
-            "image": "672691776916.dkr.ecr.eu-west-2.amazonaws.com/mo-me:prod",
-            "cpu": 0,
-            "portMappings": [],
-            "essential": true,
             "command": [
                 "bash",
                 "-c",
-                "aws s3 cp s3://patchwork-private-env/fcm_mo_me_service.json /opt/mastodon/config && bundle exec sidekiq"
+                "bundle exec sidekiq"
             ],
+            "cpu": 0,
             "environment": [],
             "environmentFiles": [
                 {
-                    "value": "arn:aws:s3:::patchwork-private-env/mome.env",
-                    "type": "s3"
+                    "type": "s3",
+                    "value": "arn:aws:s3:::patchwork-private-env/bristolcable-social.env"
                 }
             ],
-            "mountPoints": [],
-            "volumesFrom": [],
-            "workingDirectory": "/opt/mastodon",
+            "essential": true,
+            "image": "672691776916.dkr.ecr.eu-west-2.amazonaws.com/bristolcable:prod",
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/mome-sidekiq",
+                    "awslogs-group": "/ecs/bristolcable-sidekiq",
                     "awslogs-create-group": "true",
                     "awslogs-region": "eu-west-2",
                     "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
+                }
             },
-            "systemControls": []
+            "mountPoints": [],
+            "name": "bristolcable-sidekiq",
+            "portMappings": [],
+            "systemControls": [],
+            "volumesFrom": [],
+            "workingDirectory": "/opt/mastodon"
         }
     ],
-    "family": "mome-sidekiq",
-    "taskRoleArn": "arn:aws:iam::672691776916:role/patchwork-ecs-task-role",
+    "cpu": "512",
+    "enableFaultInjection": false,
     "executionRoleArn": "arn:aws:iam::672691776916:role/patchwork-ecs-task-execution-role",
+    "family": "bristolcable-sidekiq",
+    "memory": "1024",
     "networkMode": "awsvpc",
-    "revision": 11,
-    "volumes": [],
-    "status": "ACTIVE",
+    "placementConstraints": [],
+    "registeredAt": "2025-09-25T10:04:16.748Z",
+    "registeredBy": "arn:aws:iam::672691776916:user/ahn",
     "requiresAttributes": [
         {
             "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
@@ -77,22 +81,17 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
         }
     ],
-    "placementConstraints": [],
-    "compatibilities": [
-        "EC2",
-        "FARGATE"
-    ],
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "cpu": "1024",
-    "memory": "2048",
+    "revision": 1,
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2025-07-24T06:30:47.160Z",
-    "registeredBy": "arn:aws:iam::672691776916:user/ahn",
-    "enableFaultInjection": false,
+    "status": "ACTIVE",
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:672691776916:task-definition/bristolcable-sidekiq:1",
+    "taskRoleArn": "arn:aws:iam::672691776916:role/patchwork-ecs-task-role",
+    "volumes": [],
     "tags": []
 }
