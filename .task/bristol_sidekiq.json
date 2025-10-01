@@ -8,7 +8,7 @@
             "command": [
                 "bash",
                 "-c",
-                "bundle exec sidekiq"
+                "aws s3 cp s3://patchwork-private-env/bristolcable-d0b14-firebase.json /opt/mastodon/config && bundle exec sidekiq"
             ],
             "cpu": 0,
             "environment": [],
@@ -44,7 +44,7 @@
     "memory": "1024",
     "networkMode": "awsvpc",
     "placementConstraints": [],
-    "registeredAt": "2025-09-25T10:04:16.748Z",
+    "registeredAt": "2025-10-01T09:18:03.702Z",
     "registeredBy": "arn:aws:iam::672691776916:user/ahn",
     "requiresAttributes": [
         {
@@ -84,13 +84,13 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "revision": 1,
+    "revision": 6,
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
     "status": "ACTIVE",
-    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:672691776916:task-definition/bristolcable-sidekiq:1",
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:672691776916:task-definition/bristolcable-sidekiq:6",
     "taskRoleArn": "arn:aws:iam::672691776916:role/patchwork-ecs-task-role",
     "volumes": [],
     "tags": []
