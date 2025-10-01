@@ -75,3 +75,4 @@ docker-compose.override.yml
 # Ignore local-only rspec configuration
 .rspec-local
 config/fcm_mo_me_service.json
+config/bristolcable-d0b14-firebase.json
