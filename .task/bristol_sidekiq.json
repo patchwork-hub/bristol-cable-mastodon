@@ -1,7 +1,8 @@
 {
     "compatibilities": [
         "EC2",
-        "FARGATE"
+        "FARGATE",
+        "MANAGED_INSTANCES"
     ],
     "containerDefinitions": [
         {
@@ -37,14 +38,14 @@
             "workingDirectory": "/opt/mastodon"
         }
     ],
-    "cpu": "512",
+    "cpu": "1024",
     "enableFaultInjection": false,
     "executionRoleArn": "arn:aws:iam::672691776916:role/patchwork-ecs-task-execution-role",
     "family": "bristolcable-sidekiq",
-    "memory": "1024",
+    "memory": "2048",
     "networkMode": "awsvpc",
     "placementConstraints": [],
-    "registeredAt": "2025-10-01T09:18:03.702Z",
+    "registeredAt": "2025-10-12T16:46:46.972Z",
     "registeredBy": "arn:aws:iam::672691776916:user/ahn",
     "requiresAttributes": [
         {
@@ -84,13 +85,13 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "revision": 6,
+    "revision": 24,
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
     "status": "ACTIVE",
-    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:672691776916:task-definition/bristolcable-sidekiq:6",
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:672691776916:task-definition/bristolcable-sidekiq:24",
     "taskRoleArn": "arn:aws:iam::672691776916:role/patchwork-ecs-task-role",
     "volumes": [],
     "tags": []
