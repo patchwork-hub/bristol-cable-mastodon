@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/patchwork-hub/content_filters
-  revision: 043bf3680f9119f276958c750701df99d76fb08c
+  revision: 8e4c1c1176ea18bce72292987166f36a80c2cb1f
   branch: patchwork_only
   specs:
     content_filters (0.1.0)
