@@ -20,8 +20,8 @@ GIT
 
 GIT
   remote: https://github.com/patchwork-hub/content_filters
-  revision: 2e26d501f276539c56a6c0710c9f015ce01ee90b
-  branch: main
+  revision: 043bf3680f9119f276958c750701df99d76fb08c
+  branch: patchwork_only
   specs:
     content_filters (0.1.0)
       httparty (~> 0.23.1)
