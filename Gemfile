@@ -236,7 +236,7 @@ gem 'mail', '~> 2.8'
 gem 'accounts', git: 'https://github.com/patchwork-hub/accounts', branch: 'patchwork_only'
 gem 'content_filters', git: 'https://github.com/patchwork-hub/content_filters', branch: 'patchwork_only'
 gem 'conversations', git: 'https://github.com/patchwork-hub/conversations', branch: 'main'
-gem 'posts', git: 'https://github.com/patchwork-hub/posts', branch: 'main'
+gem 'posts', git: 'https://github.com/patchwork-hub/posts', branch: 'patchwork_only'
 
 # *** Add this alongside Post Gems ***
 gem 'faraday-typhoeus', '~> 1.1'
