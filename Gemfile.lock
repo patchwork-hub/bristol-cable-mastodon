@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/patchwork-hub/posts
-  revision: fa8921fbec9380f836c60e8f0ba144d9cdd12ef3
+  revision: a95ef0969bad8e4ea1dd943393c822693564a28d
   branch: patchwork_only
   specs:
     posts (0.1.0)
@@ -875,7 +875,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
       rubocop-rspec (~> 3.5)
-    ruby-ll (2.1.3)
+    ruby-ll (2.1.4)
       ansi
       ast
     ruby-prof (1.7.1)
