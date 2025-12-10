@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/patchwork-hub/accounts
-  revision: 5983c6a7b7d53dd79f3107ee062ee0ca9f96b8bc
+  revision: 9d2cd8bb92202a8a7b8235c832418b51898af5d1
   branch: patchwork_only
   specs:
     accounts (0.1.0)
